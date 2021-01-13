@@ -1,0 +1,9 @@
+﻿  14503_로봇청소기.cpp
+C:\Users\PC\source\repos\BOJ-CPP\10001~15000\BOJ-14503\14503_로봇청소기.cpp(38,18): error C2872: 'count': 모호한 기호입니다.
+C:\Users\PC\source\repos\BOJ-CPP\10001~15000\BOJ-14503\14503_로봇청소기.cpp(11,17): message : 'int count'일 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\xutility(5491,45): message : 또는       'iterator_traits<_Iter>::difference_type std::count(const _InIt,const _InIt,const _Ty &)'
+C:\Users\PC\source\repos\BOJ-CPP\10001~15000\BOJ-14503\14503_로봇청소기.cpp(60,25): error C2872: 'count': 모호한 기호입니다.
+C:\Users\PC\source\repos\BOJ-CPP\10001~15000\BOJ-14503\14503_로봇청소기.cpp(11,17): message : 'int count'일 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\xutility(5491,45): message : 또는       'iterator_traits<_Iter>::difference_type std::count(const _InIt,const _InIt,const _Ty &)'
+C:\Users\PC\source\repos\BOJ-CPP\10001~15000\BOJ-14503\14503_로봇청소기.cpp(23,5): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\PC\source\repos\BOJ-CPP\10001~15000\BOJ-14503\14503_로봇청소기.cpp(26,13): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
