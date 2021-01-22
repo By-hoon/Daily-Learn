@@ -4,24 +4,28 @@
 using namespace std;
 
 int main() {
-    int N, num, sqnum;
-    int cnt = 0;
-    cin >> N;
-    for (int i = 0; i < N; i++) {
-        cin >> num;
-        sqnum = sqrt(num);
-        if (sqnum == 1 && num != 1) {
-            cnt++;
+    int M, N, sqi;
+    int res = 0;
+    int res2 = 0;
+    cin >> M >> N;
+    for (int i = M; i <= N; i++) {
+        sqi = sqrt(i);
+        if (sqi == 1 && i != 1) {
+            if (res == 0)res2 = i;
+            res += i;
             continue;
         }
-        for (int j = 2; j <= sqnum; j++) {
-            if (num % j == 0)
+        for (int j = 2; j <= sqi; j++) {
+            if (i % j == 0)
                 break;
-            if (j == (int)sqnum)
-                cnt++;
+            if (j == (int)sqi) {
+                if (res == 0)res2 = i;
+                res += i;
+            }
         }
-        if (num % 2 == 0)
+        if (i % 2 == 0)
             continue;
     }
-    cout << cnt << '\n';
+    if (res != 0)cout << res << '\n' << res2;
+    else cout << "-1";
 }
