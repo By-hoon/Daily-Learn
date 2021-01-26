@@ -28,5 +28,4 @@ int main() {
         }
         cout << res << '\n';
     }
-    system("pause");
 }
