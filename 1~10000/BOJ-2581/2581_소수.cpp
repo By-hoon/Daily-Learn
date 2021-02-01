@@ -9,7 +9,7 @@ int main() {
     int res2 = 0;
     cin >> M >> N;
     for (int i = M; i <= N; i++) {
-        sqi = sqrt(i);
+        sqi = sqrt(i); // sqrt => 제곱근을 구하는 함수
         if (sqi == 1 && i != 1) {
             if (res == 0)res2 = i;
             res += i;

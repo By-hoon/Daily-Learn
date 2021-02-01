@@ -11,7 +11,7 @@ int main() {
 	res1 = w - x;
 	res2 = h - y;
 
-	int m1 = min(res1, res2);
+	int m1 = min(res1, res2); //둘 중 비교하여 최솟값 출력
 	int m2 = min(x, y);
 
 	cout << min(m1, m2);
