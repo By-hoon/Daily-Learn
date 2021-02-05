@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 int main() {
@@ -11,14 +12,13 @@ int main() {
             break;
         }
         X -= i;
-        i++;
-        res++;
+        i++;        // i를 통한 줄바꿈
+        res++;      // 줄바뀜 횟수 카운팅
     }
     if (res % 2 == 0)
-        cout << res + 2 - X << "/" << X;
+        cout << res + 2 - X << "/" << X; //홀수행 출력
     else
-        cout << X << "/" << res + 2 - X;
+        cout << X << "/" << res + 2 - X; //짝수행 출력
 
-    system("PAUSE");
     return 0;
 }
