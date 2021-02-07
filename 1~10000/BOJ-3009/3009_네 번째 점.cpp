@@ -12,7 +12,7 @@ int main() {
 	else if (x[0] == x[2])resx = x[1];
 	else resx = x[0];
 
-	if (y[0] == y[1])resy = y[2];		//짝이 없는 y값을 찾는 
+	if (y[0] == y[1])resy = y[2];		//짝이 없는 y값을 찾는 과정
 	else if (y[0] == y[2])resy = y[1];
 	else resy = y[0];
 
