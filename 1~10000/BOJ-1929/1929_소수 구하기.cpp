@@ -7,7 +7,7 @@ int main() {
     int M, N, sqi;
     cin >> M >> N;
     for (int i = M; i <= N; i++) {
-        sqi = sqrt(i);
+        sqi = sqrt(i);      //sqrt => 제곱근을 구하는 함수
         if (sqi == 1 && i != 1) {
             cout << i << '\n';
             continue;
