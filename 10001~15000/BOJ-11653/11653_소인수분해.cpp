@@ -8,7 +8,7 @@ int main() {
 	cin >> N;
     for (int i = 2; i <= sqrt(N); i++)	 //sqrt로 제곱근 계산
     {
-        while (N % i == 0)		// i로 딱 나눠 떨어지면 
+        while (N % i == 0)		// i로 딱 나눠 떨어지면 출력
         {
             cout << i << "\n";
             N = N / i;
