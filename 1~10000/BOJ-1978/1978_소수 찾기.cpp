@@ -9,7 +9,7 @@ int main() {
     cin >> N;
     for (int i = 0; i < N; i++) {
         cin >> num;
-        sqnum = sqrt(num);
+        sqnum = sqrt(num);     //sqrt 제곱근을 찾아주는 함수
         if (sqnum == 1 && num != 1) {
             cnt++;
             continue;
