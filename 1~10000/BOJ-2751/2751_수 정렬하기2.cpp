@@ -5,7 +5,7 @@ using namespace std;
 int N, num[1000001];
 int* num2;
 
-void merge(int left, int right) {
+void merge(int left, int right) {		//병합
 	int mid = (left + right) / 2;
 
 	int i = left;
@@ -26,7 +26,7 @@ void merge(int left, int right) {
 	for (int i = left; i <= right; i++) num[i] = num2[i];
 }
 
-void partition(int left, int right) {
+void partition(int left, int right) {		//분할
 	int mid;
 	if (left < right)
 	{
