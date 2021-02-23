@@ -9,9 +9,9 @@ int main() {
 		int x1, x2, y1, y2, r1, r2;
         int d, check1, check2;
 		cin >> x1 >> y1 >> r1 >> x2 >> y2 >> r2;
-        d = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
+        d = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);  //두 범위에서 접하는지 확인
         check1 = (r1 - r2) * (r1 - r2);
-        check2 = (r1 + r2) * (r1 + r2);
+        check2 = (r1 + r2) * (r1 + r2);     //두 범위가 겹치는지 확인
         if (d == 0)
         {
             if (check1 == 0)
