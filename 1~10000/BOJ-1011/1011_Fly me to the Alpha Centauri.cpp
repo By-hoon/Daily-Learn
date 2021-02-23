@@ -8,7 +8,7 @@ int main() {
     int X, Y, dis;
     for (int i = 0; i < T; i++) {
         cin >> X >> Y;
-        dis = Y - X;
+        dis = Y - X;            //거리계산
         int cnt = 1;
         int cnt2 = 0;
         int res = 0;
@@ -19,7 +19,7 @@ int main() {
             }
             res++;
             cnt2++;
-            if (cnt2 == 2) {
+            if (cnt2 == 2) {        //3번 루프할 때 마다 cnt 증가
                cnt++;
                cnt2 = 0;
             }
