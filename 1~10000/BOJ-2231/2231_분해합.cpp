@@ -17,7 +17,7 @@ int main() {
 		}
 
 		if (N == sum) {
-			cout << i << endl;		//endl => ÁÙ¹Ù²Þ ¸í·É¾î std::endl
+			cout << i << endl;		//endl => ì¤„ë°”ê¿ˆ ì¶œë ¥ std::endl
 			return 0;
 		}
 	}
