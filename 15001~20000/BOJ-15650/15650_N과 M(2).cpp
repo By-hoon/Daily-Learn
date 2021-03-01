@@ -5,22 +5,21 @@ using namespace std;
 int arr[9] = { 0, };
 bool ck[9] = { 0, };
 
-void dfs(int start, int cnt, int n, int m)
+void dfs(int cnt, int n, int m)
 {
     if (cnt == m)
     {
         for (int i = 0; i < m; i++)
-            cout << arr[i] << ' ';
-        cout << '\n';
+            cout << arr[i] << ' ' << endl;
         return;
     }
-    for (int i = start; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
         if (!ck[i])
         {
             ck[i] = true;
             arr[cnt] = i;
-            dfs(i + 1, cnt + 1, n, m);
+            dfs(cnt + 1, n, m);
             ck[i] = false;
         }
     }
@@ -29,5 +28,5 @@ void dfs(int start, int cnt, int n, int m)
 int main() {
     int n, m;
     cin >> n >> m;
-    dfs(1,0, n, m);
+    dfs(0, n, m);
 }
