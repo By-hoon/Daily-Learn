@@ -10,7 +10,7 @@ int main() {
         int cnt = 0;
         cin >> n;
         int div = n / 2;
-        sqi = sqrt(div);
+        sqi = sqrt(div);                            //소수값 계산
         if (sqi == 1 && div != 1) {
             cout << div << " " << div << '\n';
             cnt++;
@@ -23,7 +23,7 @@ int main() {
                 cnt++;
             }
         }
-        if (cnt == 0) {
+        if (cnt == 0) {                            //위 경우들에 포함되지 
             for (int i = 1; i < div-1; i++) {
                 int res1 = 0, res2 =0;
                 int sqi1 = sqrt(div-i);
