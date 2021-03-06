@@ -16,7 +16,7 @@ void dfs(int cnt, int n, int m)
     }
     for (int i = 1; i <= n; i++)
     {
-        if (!ck[i])                        //bool°ªÀ¸·Î Ã¼Å©
+        if (!ck[i])                        //boolê°’ìœ¼ë¡œ ì²´í¬
         {
             ck[i] = true;
             arr[cnt] = i;
