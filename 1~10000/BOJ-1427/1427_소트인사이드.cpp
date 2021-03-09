@@ -4,15 +4,13 @@
 
 using namespace std;
 
-bool compare(char a, char b)
+bool compare(char a, char b)        //내림차순 비교
 {
     return a > b;
 }
 int main() {
     string a;
-    int N;
-    cin >> N;
-    a = to_string(N);
-    sort(a.begin(), a.end(), compare);
+    cin >> a;
+    sort(a.begin(), a.end(), compare);      //sort 함수
     cout << a;
 }
