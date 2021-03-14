@@ -5,7 +5,7 @@
 
 using namespace std;
 
-bool compare(pair<int, string> a, pair<int, string> b)
+bool compare(pair<int, string> a, pair<int, string> b)		//나이만 비교
 {
 	return a.first < b.first;
 }
