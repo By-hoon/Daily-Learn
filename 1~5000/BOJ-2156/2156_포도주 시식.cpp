@@ -28,7 +28,7 @@ void Solution()
     for (int i = 3; i <= N; i++)
     {
         ans[i] = Max(ans[i - 1], Max(ans[i - 2] + num[i], ans[i - 3] + num[i - 1] + num[i]));
-    }
+    }       //1,2,3,으로 따졌을 때, 2인 경우, 1+3의 경우, 0+2+3의 경우로 점화식 생성
 
     cout << ans[N] << "\n";
 }
