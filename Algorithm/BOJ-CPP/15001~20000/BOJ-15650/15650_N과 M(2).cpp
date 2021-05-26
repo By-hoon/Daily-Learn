@@ -16,7 +16,7 @@ void dfs(int start, int cnt, int n, int m)
     }
     for (int i = start; i <= n; i++)
     {
-        if (!ck[i])                        //bool값으로 체크
+        if (!ck[i])                        //bool값으로 체크한다
         {
             ck[i] = true;
             arr[cnt] = i;
