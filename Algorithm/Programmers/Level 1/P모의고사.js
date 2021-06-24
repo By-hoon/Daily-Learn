@@ -24,6 +24,3 @@ function solution(answers) {
 
     return answer;
 }
-var answers = [1,2,3,4,5];
-solution(answers)
-
