@@ -428,3 +428,93 @@ button.addEventListener('click', function() {
   this.innerHTML = 'Clicked button';
 });
 ```
+
+<br>
+
+> # **Array Method**
+
+- ### for each
+- ### map
+
+## **for each**
+
+_Array 요소를 제공된 함수로 한 번 실행한다._
+
+콜백 함수를 인자로 받아, 배열의 각 요소에 콜백함수를 실행한다. 아무 값도 반환하지 않는다.
+
+일반적인 `forEach`문은 다음과 같다.
+
+```JS
+arr.forEach(function(value, index, arr){
+  console.log(value);
+})
+```
+
+`forEach()` 메소드는 아무것도 리턴하지 않는다.
+
+단지 제공된 함수로 Array 요소를 호출한다. 이 콜백은 호출하는 Array를 변경할 수 있다.
+
+    forEach문은 구문 밖으로 return값을 받지 못한다.
+
+```JS
+var arr = [1,2,3,4,5];
+var newArr = arr.forEach(function(e, i) {
+  return e;
+});
+// undefined
+```
+
+## **Map**
+
+_모든 Array 요소가 제공된 함수로 호출될 때 새로운 array를 생성한다._
+
+기존의 배열을 이용해, 새로운 배열을 생성할 때 사용한다. 콜백 함수를 인자로 받아, 배열의 각 요소에 대해서 실행한 결괏값을 반환한다.
+
+일반적인 `map` 실행 방법은 다음과 같다.
+
+```JS
+var newArr = arr.map(function(value, index, arr) {
+  return condition;
+});
+```
+
+    map의 경우 요소가 아닌 새로운 값을 만들어서 return할 수 있다. return값 자체를 반환한다.
+
+```JS
+var arr = [1, 2, 3, 4, 5];
+var newArr = arr.map(function(v, i, arr) {
+  return v + 1;
+});
+// 2, 3, 4, 5, 6
+```
+
+## **forEach와 Map의 차이점**
+
+`forEach()`는 당신의 Array안에 데이터를 변경하려는 것이 아니라 데이터베이스에 저장하거나 로그아웃하는 것과 같은 작업에 유용할 수 있다.
+
+```JS
+var arr = ["a", "b", "c", "d"];
+
+arr.forEach(letter => {
+ console.log(letter);
+});
+
+// a
+// b
+// c
+// d
+```
+
+`map()`은 데이터를 변경할 때 선호될 수 있다. 더 빠를 뿐 아니라 새로운 배열을 반환하며, 이는 다른 메소드들과 함께 사용하는 것 같이 멋진 일을 할 수 있다는 것을 의미한다.
+
+```JS
+var arr = [1, 2, 3, 4, 5];
+var arr2 = arr.map(num => num * 2).filter(num => num > 5);
+
+// arr2 = [6, 8, 10]
+```
+
+- `map()` 메소드는 Array안에 요소들을 호출한다, `forEach()`와 다른 점은 값을 사용하고 Array와 동일한 사이즈의 새로운 Array를 반환한다.
+- 결론적으로 `map()`을 사용하면, 결괏값을 배열로 받을 수 있다. 함수 안의 결괏값을 계산하지 않고, 배열로 받기 위해서는 `map()`을 사용하는 게 유리하다.
+- `map()`은 메모리를 할당하고 리턴 값을 저장하지만, `forEach()`는 리턴 값을 버리고 항상 undefined를 리턴한다.
+- `forEach()`는 콜백함수로 현재 Array를 변환할 수 있으며, 대신에 `map()`은 새로운 Array를 리턴한다.
