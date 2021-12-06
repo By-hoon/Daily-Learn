@@ -435,6 +435,7 @@ button.addEventListener('click', function() {
 
 - ### for each
 - ### map
+- ### filter
 
 ## **for each**
 
@@ -518,3 +519,54 @@ var arr2 = arr.map(num => num * 2).filter(num => num > 5);
 - 결론적으로 `map()`을 사용하면, 결괏값을 배열로 받을 수 있다. 함수 안의 결괏값을 계산하지 않고, 배열로 받기 위해서는 `map()`을 사용하는 게 유리하다.
 - `map()`은 메모리를 할당하고 리턴 값을 저장하지만, `forEach()`는 리턴 값을 버리고 항상 undefined를 리턴한다.
 - `forEach()`는 콜백함수로 현재 Array를 변환할 수 있으며, 대신에 `map()`은 새로운 Array를 리턴한다.
+
+## **filter**
+
+_자바스크립트의 filter함수는 배열의 각 요소를 순회하며 callback함수를 실행하며, 조건에 맞는 요소만을 갖는 배열을 반환한다._
+
+```JS
+arr.filter(callback(element[, index[, array]])[, thisArg])
+```
+
+### **파라미터**
+
+### 1. callback function
+
+- 각 요소의 조건을 판단할 함수로, true를 반환하면 요소를 유지하고 false를 반환하면 제외한다.
+- 다음 3가지의 인수를 가진다.
+  - element: 배열의 현재 요소
+  - index(Optional): 배열의 현재 요소의 인덱스
+  - array(Optional): 호출한 배열
+
+### 2. thisArg(Optional
+
+- callback함수를 실행할 때 this로 사용되는 값
+
+### **반환값**
+
+배열을 순서대로 불러 각 요소에 대해 callback 함수을 실행하고 결과가 true인 요소들만으로 이루어진 새로운 배열을 반환한다.
+
+### **예제**
+
+```JS
+const numbers = [1, 2, 3, 4, 5]; // 기존 배열
+
+// filter1 - callback함수를 직접 작성
+// 현재 요소를 2로 나눈 나머지가 1일 경우 홀수
+const filter1 = numbers.filter(currentNumber => currentNumber % 2 === 1);
+
+console.log('filter1 =', filter1);
+//filter1= [1, 3, 5]
+```
+
+```JS
+// filter2 - callback함수 선언 후 이용
+function isOdd(currentNumber) {
+  return currentNumber % 2 === 1;
+}
+
+const filter2 = numbers.filter(isOdd);
+
+console.log('filter2 =', filter2);
+//filter2= [1, 3, 5]
+```
