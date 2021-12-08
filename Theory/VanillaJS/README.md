@@ -436,6 +436,7 @@ button.addEventListener('click', function() {
 - ### for each
 - ### map
 - ### filter
+- ### reduce
 
 ## **for each**
 
@@ -570,3 +571,17 @@ const filter2 = numbers.filter(isOdd);
 console.log('filter2 =', filter2);
 //filter2= [1, 3, 5]
 ```
+
+## **reduce**
+
+_배열의 각 요소에 대해 주어진 리듀서(reducer) 함수를 실행하고, 하나의 결과값을 반환합니다._
+
+map이 배열의 각 요소를 변형한다면 reduce는 배열 자체를 변형합니다. reduce라는 이름은 이 메서드가 보통 배열을 값 하나로 줄이는 쓰이기 때문에 붙었습니다. 예를 들어 배열에 들어있는 숫자를 더하거나 평균을 구하는 것은 배열을 값 하나로 줄이는 동작입니다. 하지만 reduce가 반환하는 값 하나는 객체일 수도 있고, 다른 배열일 수도 있습니다.
+
+<br>
+리듀서 함수는 네 개의 인자를 가집니다.
+
+- 누산기accumulator (acc)
+- 현재 값 (cur)
+- 현재 인덱스 (idx)
+- 원본 배열 (src)
