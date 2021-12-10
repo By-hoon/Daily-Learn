@@ -431,6 +431,167 @@ button.addEventListener('click', function() {
 
 <br>
 
+> # **클래스**
+
+- ### 클래스와 기본 문법
+
+<br>
+
+> > ## **클래스와 기본 문법**
+
+## **기본 문법**
+
+_클래스는 다음과 같은 기본 문법을 사용해 만들 수 있다._
+
+```JS
+class MyClass {
+  // 여러 메서드를 정의할 수 있음
+  constructor() { ... }
+  method1() { ... }
+  method2() { ... }
+  method3() { ... }
+  ...
+}
+```
+
+이렇게 클래스를 만들고, new MyClass()를 호출하면 내부에서 정의한 메서드가 들어 있는 객체가 생성된다.
+
+객체의 기본 상태를 설정해주는 생성자 메서드 constructor()는 new에 의해 자동으로 호출되므로, 특별한 절차 없이 객체를 초기화 할 수 있다.
+
+예시:
+
+```JS
+class User {
+
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayHi() {
+    alert(this.name);
+  }
+
+}
+
+// 사용법:
+let user = new User("John");
+user.sayHi();
+```
+
+`new User("John")`를 호출하면 다음과 같은 일이 일어난다.
+
+- 새로운 객체가 생성된다.
+- 넘겨받은 인수와 함께 constructor가 자동으로 실행된다. 이때 인수 "John"이 this.name에 할당된다.
+
+  이런 과정을 거친 후에 `user.sayHi()` 같은 객체 메서드를 호출할 수 있다.
+
+> > 클래스와 관련된 표기법은 객체 리터럴 표기법과 차이가 있다. 클래스에선 메서드 사이에 쉼표를 넣지 않아도 된다.
+
+<br>
+
+## **클래스란**
+
+_자바스크립트에서 클래스는 함수의 한 종류이다._
+
+```JS
+class User {
+  constructor(name) { this.name = name; }
+  sayHi() { alert(this.name); }
+}
+
+// User가 함수라는 증거
+alert(typeof User); // function
+```
+
+class User {...} 문법 구조가 진짜 하는 일은 다음과 같다.
+
+- `User`라는 이름을 가진 함수를 만든다. 함수 본문은 생성자 메서드 `constructor`에서 가져온다. 생성자 메서드가 없으면 본문이 비워진 채로 함수가 만들어진다.
+- `sayHi`같은 클래스 내에서 정의한 메서드를 `User.prototype`에 저장한다.
+
+`new User`를 호출해 객체를 만들고, 객체의 메서드를 호출하면 메서드를 프로토타입에서 가져온다. 이 과정이 있기 때문에 객체에서 클래스 메서드에 접근할 수 있다.
+
+코드로 확인하면,
+
+```JS
+class User {
+  constructor(name) { this.name = name; }
+  sayHi() { alert(this.name); }
+}
+
+// 클래스는 함수입니다.
+alert(typeof User); // function
+
+// 정확히는 생성자 메서드와 동일합니다.
+alert(User === User.prototype.constructor); // true
+
+// 클래스 내부에서 정의한 메서드는 User.prototype에 저장됩니다.
+alert(User.prototype.sayHi); // alert(this.name);
+
+// 현재 프로토타입에는 메서드가 두 개입니다.
+alert(Object.getOwnPropertyNames(User.prototype)); // constructor, sayHi
+```
+
+## **클래스는 단순한 편의 문법이 아니다.**
+
+_어떤 사람들은 `class`라는 키워드 없이도 클래스 역할을 하는 함수를 선언할 수 있기 때문에 클래스는 '편의 문법’에 불과하다고 이야기한다._
+
+> > 참고로 기능은 동일하나 기존 문법을 쉽게 읽을 수 있게 만든 문법을 편의 문법(syntactic sugar, 문법 설탕)이라고 한다.
+
+```JS
+// class User와 동일한 기능을 하는 순수 함수를 만들어보겠습니다.
+
+// 1. 생성자 함수를 만듭니다.
+function User(name) {
+  this.name = name;
+}
+// 모든 함수의 프로토타입은 'constructor' 프로퍼티를 기본으로 갖고 있기 때문에
+// constructor 프로퍼티를 명시적으로 만들 필요가 없습니다.
+
+// 2. prototype에 메서드를 추가합니다.
+User.prototype.sayHi = function() {
+  alert(this.name);
+};
+
+// 사용법:
+let user = new User("John");
+user.sayHi();
+```
+
+위 예시처럼 순수 함수로 클래스 역할을 하는 함수를 선언하는 방법과 `class` 키워드를 사용하는 방법의 결과는 거의 같기 때문에, `class`가 단순한 편의 문법이라고 생각된다.
+
+하지만 두 방법에는 중요한 차이가 몇 가지 있다.
+
+- `class`로 만든 함수엔 특수 내부 프로퍼티인 `[[FunctionKind]]:"classConstructor"`가 이름표처럼 붙는다. 이것만으로도 두 방법엔 분명한 차이가 있음을 알 수 있다.
+
+  자바스크립트는 다양한 방법을 사용해 함수에 [[FunctionKind]]:"classConstructor"가 있는지를 확인한다. 이런 검증 과정이 있기 때문에 클래스 생성자를 new와 함께 호출하지 않으면 에러가 발생한다.
+
+  ```JS
+  class User {
+  constructor() {}
+  }
+
+  alert(typeof User); // function
+  User(); // TypeError: Class constructor User cannot be invoked without 'new'
+  ```
+
+  대부분의 자바스크립트 엔진이 클래스 생성자를 문자열로 표현할 때 'class…'로 시작하는 문자열로 표현한다는 점 역시 다르다.
+
+  ```JS
+  class User {
+  constructor() {}
+  }
+
+  alert(User); // class User { ... }
+  ```
+
+- 클래스 메서드는 열거할 수 없다(non-enumerable). 클래스의 `prototype` 프로퍼티에 추가된 메서드 전체의 `enumerable` 플래그는 `false`이다.
+
+  `for..in`으로 객체를 순회할 때, 메서드는 순회 대상에서 제외하고자 하는 경우가 많으므로 이 특징은 꽤 유용하다.
+
+- 클래스는 항상 `엄격 모드`로 실행된다`(use strict)`. 클래스 생성자 안 코드 전체엔 자동으로 엄격 모드가 적용된다.
+
+<br>
+
 > # **Array Method**
 
 - ### for each
