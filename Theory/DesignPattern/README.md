@@ -105,3 +105,139 @@ _MVC 는 Model, View, Controller의 약자 이다. 하나의 애플리케이션,
 - python의 django
 
 <br>
+
+> # **JS 디자인 패턴**
+
+- ### 싱글톤 패턴
+
+<br>
+
+> ## 싱글톤 패턴
+
+<br>
+
+### **싱글톤 패턴?**
+
+특정 클래스의 인스턴스를 런타임동안 오직 하나만 유지하는 것을 의미한다. 자바스크립트는 클래스가 없고 *오직 객체*만 존재. 즉 새로 객체를 만들면 다른 객체와도 같지않아 이미 싱글톤이다.
+
+```JS
+var a = { k: 1 };
+var b = { k: 1 };
+a == b // false
+a === b // false
+```
+
+값이 같아도 다른 객체 취급한다. 객체 리터럴을 이용해 객체를 생성할 때마다 싱글톤으로 만드는 것이다.
+
+<br>
+
+### **스태틱 프로퍼티에 인스턴스 저장**
+
+```JS
+function Singleton() {
+  if (typeof Singleton.instance === "object") {
+      return Singleton.instance;
+    }
+    // 정상적으로 진행
+    this.a = 0; ..
+    // 인스턴스 캐시
+    Singleton.instance = this;
+
+    return this;
+}
+```
+
+클래스 프로퍼티 instance를 이용한 방법이다. instance가 공개되어 있다는 것이 단점이다. 다른 시점에서 변경될 수 있다.
+
+<br>
+
+### **클로저에 인스턴스 저장**
+
+클로저를 이용해 단일 인스턴스를 보호하는 방법이다.
+
+```JS
+function Singleton() {
+  // 캐싱
+  let instance = this;
+
+  // 정상적으로 진행
+  this.a = 0;
+  ..
+
+  // 생성자 재작성
+  Singleton = function() {
+    return instance;
+  }
+}
+```
+
+첫 호출 시 캐싱을 하고, 클로저를 통해 생성자를 재정의한다. 다음 호출 시 재작성된 생성자로 호출되는데 클로저로 물고있는 instance를 참조한다.
+
+    재작성된 함수는 재정의 시점 이전에 원본 생성자에 추가된 프로퍼티를 잃어버린다는 단점이 있다.
+
+`Singleton`클래스의 프로토타입에 뭔가를 추가해도 연결되지 않는다.
+
+```JS
+Singleton.prototype.m = true;
+
+let a = new Singleton();
+
+Singleton.prototype.test = function() {
+  return "test;
+}
+
+let b = new Singleton();
+```
+
+a,b는 미리 정의한 프로토타입 m을 가지고 있다. 한 번 호출 후 추가로 정의한 test 메서드는 반영되지 않는다.
+
+이는 한 번 생성된 constructor가 재정의된 생성자가 아닌 원본 생성자를 가리키고 있기 때문이다.
+
+이를 해결하기 위해서는 두 가지 방법이 있다.
+
+- 생성자 메서드에서 prototype과 constructor를 재지정
+- 즉시 실행함수로 감싸는 방법
+
+### **생성자 메서드에서 prototype과 constructor를 재지정**
+
+```JS
+function Singleton() {
+  let instance;
+
+  Singleton = function Singleton() {
+    return instance;
+  }
+
+  //prototype 프로퍼티 변경
+  Singleton.prototype = this;
+
+  instance = new Singleton();
+  instance.constructor = Singleton;
+
+  ...
+
+  return instance;
+}
+```
+
+### **즉시 실행함수로 감싸는 방법**
+
+_비공개 instance를 가르키는 방식이다._
+
+```JS
+let Singleton;
+
+(function() {
+  let instance;
+
+  Singleton = function Singleton() {
+    if (instance) {
+      return instance;
+    }
+
+    instance = this;
+
+    ...
+  };
+})();
+```
