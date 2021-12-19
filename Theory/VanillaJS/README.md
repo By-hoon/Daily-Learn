@@ -821,6 +821,9 @@ MyClass는 constructor의 코드를 본문으로 갖는 함수이다. MyClass에
 - ### map
 - ### filter
 - ### reduce
+- ### find
+- ### findIndex
+- ### indexOf
 
 ## **for each**
 
@@ -969,3 +972,103 @@ map이 배열의 각 요소를 변형한다면 reduce는 배열 자체를 변형
 - 현재 값 (cur)
 - 현재 인덱스 (idx)
 - 원본 배열 (src)
+
+<br>
+
+## **find**
+
+_판별 함수를 만족하는 첫 요소를 반환_
+
+- arr.find(callback)
+- 반환 타입은 찾은 요소의 타입, 없다면 undefinded
+- callback(element, index, array) → 콜백 함수가 받는 인자(각 인자는 find 메서드를 호출한 배열에서 받아온다.)
+- 원하는 요소를 찾자마자 메서드를 종료한다.
+
+```JS
+const arr = [5, 6, 9, 1, 6, 3, 2, 1, 2, 7, 9, 4, 3];
+const find1 = arr.find((element, index, array) => {
+  // 인덱스 2인 요소를 찾을 때 까지 반복
+  console.log('콜백함수를 실행한 배열은? ', array);
+  return index == 2;
+});
+
+const find2 = arr.find((element, index, arr) => element === 3);
+const find3 = arr.find((e) => e > 8);
+const find4 = arr.find((e) => e > 10);
+console.log('find1:', find1);
+console.log('find2:', find2);
+console.log('find3:', find3);
+console.log('find4:', find4);
+```
+
+```JS
+콜백함수를 실행한 배열은? [5, 6, 9, 1, 6, 3, 2, 1, 2, 7, 9, 4, 3]
+콜백함수를 실행한 배열은? [5, 6, 9, 1, 6, 3, 2, 1, 2, 7, 9, 4, 3]
+콜백함수를 실행한 배열은? [5, 6, 9, 1, 6, 3, 2, 1, 2, 7, 9, 4, 3]
+find1: 9
+find2: 3
+find3: 9
+find4: undefined
+```
+
+<br>
+
+## **findIndex**
+
+_판별 함수를 만족하는 첫 식별자 반환_
+
+- arr.findIndex(callback)
+- 반환 타입 number, 없다면 -1
+- callback(element, index, array) → 콜백함수가 받는 인자(각 인자는 findIndex 메서드를 호출한 배열에서 받아온다.)
+- 원하는 요소를 찾자마자 메서드를 종료한다.
+
+```JS
+const arr = [5, 6, 9, 1, 6, 3, 2, 1, 2, 7, 9, 4, 3];
+const find1 = arr.findIndex((element, index, array) => {
+  return index < 7 && index > 5;
+  });
+const find2 = arr.findIndex((element, index, arr) => element === 3);
+const find3 = arr.findIndex((e) => e > 8);
+const find4 = arr.findIndex((e) => e > 10);
+console.log('findIndex1:', find1);
+console.log('findIndex2:', find2);
+console.log('findIndex3:', find3);
+console.log('findIndex4:', find4);
+```
+
+```JS
+findIndex1: 6
+findIndex2: 5
+findIndex3: 2
+findIndex4: -1
+```
+
+<br>
+
+## **indexOf**
+
+_인자로 받은 값을 찾아 맞는 식별자 반환_
+
+- arr.indexOf(search, fromIndex)
+- 반환 타입 number, 없다면 -1
+- search 매개변수는 배열에서 찾을 요소를 받는다.
+- 원하는 요소를 찾자마자 메서드를 종료한다.
+
+```JS
+const arr = [5, 6, 9, 1, 6, 3, 2, 1, 2, 7, 9, 4, 3];
+const find1 = arr.indexOf(1);
+const find2 = arr.indexOf(2);
+const find3 = arr.indexOf(3);
+const find4 = arr.indexOf(4);
+console.log('findIndex1:', find1);
+console.log('findIndex2:', find2);
+console.log('findIndex3:', find3);
+console.log('findIndex4:', find4);
+```
+
+```JS
+findIndex1: 3
+findIndex2: 6
+findIndex3: 5
+findIndex4: 11
+```
