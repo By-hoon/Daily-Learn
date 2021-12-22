@@ -824,6 +824,8 @@ MyClass는 constructor의 코드를 본문으로 갖는 함수이다. MyClass에
 - ### find
 - ### findIndex
 - ### indexOf
+- ### every
+- ### some
 
 ## **for each**
 
@@ -1071,4 +1073,55 @@ findIndex1: 3
 findIndex2: 6
 findIndex3: 5
 findIndex4: 11
+```
+
+<br>
+
+## **every**
+
+- every는 배열의 각 엘리먼트에 대해서 테스트 함수의 반환 값이 모두 true인지 확인합니다.
+- 모든 case가 true일때 true를 반환합니다.
+- 하나라도 false이면 반환 값은 false입니다.
+- 기존 배열 값은 변경되지 않습니다.
+
+```JS
+arr.every(function(currentValue, index, array), thisValue))
+```
+
+- currentValue: (필수) 배열내에서 순차적으로 입력되는 엘리먼트
+- index: (옵션) 현재 엘리먼트의 배열 내 index
+- array: (옵션) 현재 엘리먼트가 속한 배열
+- thisValue: (옵션) 함수 내부에서 사용될 this에 대한 값
+
+```JS
+var objArr = [{name: '철수', age: 10}, {name: '영희', age: 10}, {name: '바둑이', age: 2}]
+
+console.log(objArr.every((item)=> item.age>5)); //false (바둑이 탈락!)
+console.log(objArr.every((item)=> item.age>1)); //true
+```
+
+<br>
+
+## **some**
+
+- some()은 배열의 각 엘리먼트에 대해서 테스트 함수의 반환 값이 하나라도 true가 있는지 확인합니다.
+- 하나라도 true가 발생하면 true를 반환합니다.
+- 모두 false인 경우만 false를 반환합니다.
+- every가 and 조건이라면 some은 or 조건입니다.
+- 기존 배열 값은 변경되지 않습니다.
+
+```JS
+arr.some(function(currentValue, index, array), thisValue))
+```
+
+- currentValue: (필수) 배열내에서 순차적으로 입력되는 엘리먼트
+- index: (옵션) 현재 엘리먼트의 배열 내 index
+- array: (옵션) 현재 엘리먼트가 속한 배열
+- thisValue: (옵션) 함수 내부에서 사용될 this에 대한 값
+
+```JS
+var objArr = [{name: '철수', age: 10},{name: '영희', age: 10}, {name: '바둑이', age: 2}]
+
+console.log(objArr.some((item)=> item.age>5)); //true
+console.log(objArr.some((item)=> item.age>10)); //false (모두 탈락!)
 ```
