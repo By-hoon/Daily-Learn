@@ -40,7 +40,7 @@ if(settings.notification.follow){
 
 ## **사용 방법**
 
-구조 분해 할당에서는 `follow`와 `color`를 불어오고자 할때 다음과 같이 불러올 수 있다.
+구조 분해 할당에서는 `follow`와 `color`를 불러오고자 할때 다음과 같이 불러올 수 있다.
 
 ```JS
 const {
@@ -78,3 +78,43 @@ console.log(notification); /// {}
 ```
 
 위와 같이 default 값을 설정하면, 특정 요소가 없는 경우에도 오류없이 값을 가져올 수 있게 된다.
+
+<br>
+
+# **Array Destructuring**
+
+## **사용 이유**
+
+```JS
+const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+```
+
+위처럼 배열이 생성된 경우, 월요일, 화요일, 수요일을 추출하여 출력하는 방법은 다음과 같다.
+
+```JS
+const mon = days[0];
+const tue = days[1];
+const wed = days[2];_
+
+console.log(mon, tue, wed);
+```
+
+배열의 구조가 간단한 경우는 위와 같은 방법에 큰 어려움이 없지만, 배열이 복잡해지면 항상 인덱스로 값을 찾기에는 어려움이 따른다.
+
+## **사용 방법**
+
+구조 분해 할당에서는 월요일, 화요일, 수요일을 불러오고자 할때 다음과 같이 불러올 수 있다.
+
+```JS
+const [mon, tue, wed] = days;
+
+console.log(mon, tue, wed);
+```
+
+위 방법은 코드도 더욱 간단하게 표현할 수 있으며, 값의 할당에도 유리하다.
+
+<br>
+
+    array destructuring은 정보의 수정이 object destructuring에 비해 불편하기 때문에, 가져온 정보를 조작하지 않을 때 쓰기 좋다.
+
+<br>
