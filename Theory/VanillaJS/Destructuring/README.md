@@ -118,3 +118,54 @@ console.log(mon, tue, wed);
     array destructuring은 정보의 수정이 object destructuring에 비해 불편하기 때문에, 가져온 정보를 조작하지 않을 때 쓰기 좋다.
 
 <br>
+
+# **Function Destructuring**
+
+<br>
+
+# **Renaming**
+
+_Destructuring을 유지하면서 renaming_
+
+```JS
+const settings = {
+    color: {
+        chosen_color: "dark"
+    }
+};
+
+const {
+    color: {chosen_color = "light"}
+} = settings;
+
+console.log(chosen_color);
+```
+
+object destructuring에서 위와 같이 데이터를 추출할 수 있다.
+
+하지만 저장되어 있는 이름이 마음에 들지 않을 수 있다.
+
+그 경우 다음과 같이 **renaming**을 해줄 수 있다.
+
+```JS
+const {
+    color: {chosen_color: chosenColor = "light"}
+} = settings;
+
+console.log(chosenColor);
+```
+
+만약 이미 선언했던 변수로 **renaming** 해주고 싶다면, 다음과 같이 해야한다.
+
+```JS
+let chosenColor = "blue";
+//단 선언된 변수가 let이여야 한다.
+
+console.log(chosenColor); // blue
+
+({
+    color: { chosen_color: chosenColor = "light"}
+} = settings);
+
+console.log(chosenColor); // dark
+```
