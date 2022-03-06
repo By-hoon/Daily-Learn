@@ -226,3 +226,53 @@ console.log(chosenColor); // blue
 
 console.log(chosenColor); // dark
 ```
+
+<br>
+
+# **Value Shorthands**
+
+object에서 key값과 변수명이 일치하는 경우 사용할 수 있다.
+
+```JS
+const follow = checkFollow();
+const alert = checkAlert();
+
+const settings = {
+    notifications: {
+        follow,     // = follow: follow
+        alert,      // = alert: alert
+    }
+}
+```
+
+<br>
+
+# **Swapping and Skipping**
+
+## **Swapping**
+
+값이 서로 바뀌어 있는 경우 사용할 수 있다.
+
+```JS
+let mon = "Sat";
+let sat = "Mon";
+
+[sat, mon] = [mon, sat]
+
+console.log(sat); // "Sat"
+console.log(mon); // "Mon"
+```
+
+<br>
+
+## **Skipping**
+
+배열에서 일부 값들을 제외하고 추출할 수 있다.
+
+```JS
+const days = ["mon", "tue", "wed", "thu", "fri"];
+
+const [, , , thu, fri] = days;
+
+console.log(thu, fri); // thu fri
+```
