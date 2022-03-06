@@ -121,6 +121,63 @@ console.log(mon, tue, wed);
 
 # **Function Destructuring**
 
+## **사용 이유**
+
+```JS
+function saveSettings(settings) {
+    if(!settings.mkt){
+
+    }
+    saveColor(settings.color)
+}
+
+saveSettings({
+    follow: true,
+    alert: true,
+    mkt: false,
+    color: "green",
+});
+```
+
+위와 같이 코드가 형성되어 있을때, `color`처럼 특정 값이 없는 경우 `undefined`를 출력하게 된다. 따라서 destructuring을 통해 default값을 설정해줄 수 있어야한다.
+
+## **사용 방법**
+
+function destructuring은 두가지 방법으로 활용할 수 있다.
+
+첫번째 일반적인 방법으로 다음과 같이 활용할 수 있다.
+
+```JS
+function saveSettings({follow, alert, color = "blue"}) {
+    if(!settings.mkt){
+
+    }
+    saveColor(settings.color)
+}
+```
+
+두번째는 object destructuring을 이용하는 것이다.
+
+```JS
+function saveSettings({notifications, color: {theme}}) {
+    if(!settings.mkt){
+
+    }
+    saveColor(settings.color)
+}
+
+saveSettings({
+    notifications: {
+        follow: true,
+        alert: true,
+        mkt: false,
+    },
+    color: {
+        theme: "blue",
+    }
+})
+```
+
 <br>
 
 # **Renaming**
