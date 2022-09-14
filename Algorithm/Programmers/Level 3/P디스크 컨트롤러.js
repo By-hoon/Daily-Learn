@@ -1,30 +1,25 @@
 function solution(jobs) {
   let answer = 0;
-  const required = [];
-  const request = [];
-  jobs.forEach((job) => {
-    if (!required[job[0]]) required[job[0]] = [];
-    required[job[0]].push(job[1]);
-    request[job[0]] = true;
-  });
+  let jobCount = 0;
+  jobs.sort((a, b) => a[0] - b[0]);
   const priorityQueue = [];
-  let work = false;
   let currentTime = 0;
-  let finishTime = 0;
-  while (priorityQueue.length || required.length) {
-    if (currentTime === finishTime) work = false;
-    if (request[currentTime]) {
-      priorityQueue.push(...required.shift());
-      priorityQueue.sort();
+  while (priorityQueue.length || jobCount < jobs.length) {
+    if (jobs.length > jobCount && currentTime >= jobs[jobCount][0]) {
+      priorityQueue.push(jobs[jobCount]);
+      priorityQueue.sort((a, b) => {
+        return a[1] - b[1];
+      });
+      jobCount++;
+      continue;
     }
-    if (!work) {
-      const cost = priorityQueue.shift();
-      finishTime = currentTime + cost;
-      answer += cost;
-      work = true;
+    if (priorityQueue.length !== 0) {
+      currentTime += priorityQueue[0][1];
+      answer += currentTime - priorityQueue[0][0];
+      priorityQueue.shift();
+    } else {
+      currentTime = jobs[jobCount][0];
     }
-    currentTime++;
-    if (priorityQueue.length) answer += priorityQueue.length;
   }
   return Math.floor(answer / jobs.length);
 }
