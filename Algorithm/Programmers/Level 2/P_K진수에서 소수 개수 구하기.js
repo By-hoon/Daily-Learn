@@ -1,18 +1,12 @@
 function solution(n, k) {
   let primes = [];
   const convert = n.toString(k);
-  const indexs = [-1];
-  if (convert.length === 1) {
-    if (isPrime(Number(convert))) primes.push(convert);
-  } else {
-    for (let i = 0; i < convert.length; i++) {
-      if (convert[i] == 0) indexs.push(i);
+  const numbers = convert.split("0");
+  numbers.forEach((number) => {
+    if (isPrime(Number(number))) {
+      primes.push(number);
     }
-    indexs.forEach((index, i) => {
-      const number = convert.slice(index + 1, indexs[i + 1]);
-      if (isPrime(Number(number))) primes.push(number);
-    });
-  }
+  });
   return !primes.length ? 0 : primes.length;
 }
 
