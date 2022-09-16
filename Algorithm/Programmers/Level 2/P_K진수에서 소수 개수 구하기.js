@@ -13,8 +13,7 @@ function solution(n, k) {
       if (isPrime(Number(number))) primes.push(number);
     });
   }
-  console.log(primes);
-  return primes.length === 0 ? -1 : primes.length;
+  return !primes.length ? 0 : primes.length;
 }
 
 const isPrime = (number) => {
@@ -32,5 +31,3 @@ const isPrime = (number) => {
   }
   return true;
 };
-
-solution(437674, 3);
