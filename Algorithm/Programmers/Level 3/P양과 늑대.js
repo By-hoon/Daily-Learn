@@ -5,7 +5,8 @@ function solution(info, edges) {
     nodes[edge[0]].push(edge[1]);
   });
   const dfs = (sheep, wolf, current, unvisited) => {
-    let currentIndex = unvisited.indexOf(current);
+    let newUnvisited = [...unvisited];
+    let currentIndex = newUnvisited.indexOf(current);
     if (info[current] == 1) {
       wolf++;
     } else {
@@ -13,11 +14,11 @@ function solution(info, edges) {
     }
     answer = Math.max(answer, sheep);
     if (sheep == wolf) return;
-    unvisited.push(...nodes[current]);
-    unvisited.splice(currentIndex, 1);
+    newUnvisited.push(...nodes[current]);
+    newUnvisited.splice(currentIndex, 1);
 
-    for (const next of unvisited) {
-      dfs(sheep, wolf, next, unvisited);
+    for (const next of newUnvisited) {
+      dfs(sheep, wolf, next, newUnvisited);
     }
   };
   dfs(0, 0, 0, [0]);
