@@ -2,23 +2,28 @@ function solution(sequence, k) {
   let answer = [];
   let start = 0;
   let last = 0;
+  let sum = sequence[0];
   while (start !== sequence.length && last !== sequence.length) {
     if (sequence[last] === k) {
       answer = [last, last];
       break;
     }
-    let sum = 0;
-    for (let i = start; i <= last; i++) {
-      sum += sequence[i];
-    }
     if (sum === k) {
       answer = compareIndex(answer, [start, last]);
+      sum -= sequence[start];
       start++;
       last++;
+      sum += sequence[last];
       continue;
     }
-    if (sum > k) start++;
-    if (sum < k) last++;
+    if (sum > k) {
+      sum -= sequence[start];
+      start++;
+    }
+    if (sum < k) {
+      last++;
+      sum += sequence[last];
+    }
   }
   return answer;
 }
