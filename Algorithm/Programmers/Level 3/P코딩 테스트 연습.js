@@ -7,6 +7,9 @@ function solution(alp, cop, problems) {
     if (problem[1] > maxCop) maxCop = problem[1];
   });
 
+  if (alp > maxAlp) alp = maxAlp;
+  if (cop > maxCop) cop = maxCop;
+
   times[alp][cop] = 0;
   for (let i = 0; i <= maxAlp; i++) {
     for (let j = 0; j <= maxCop; j++) {
