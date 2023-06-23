@@ -11,8 +11,8 @@ function solution(alp, cop, problems) {
   if (cop > maxCop) cop = maxCop;
 
   times[alp][cop] = 0;
-  for (let i = 0; i <= maxAlp; i++) {
-    for (let j = 0; j <= maxCop; j++) {
+  for (let i = alp; i <= maxAlp; i++) {
+    for (let j = cop; j <= maxCop; j++) {
       if (i === maxAlp && j === maxCop) break;
 
       if (i < maxAlp) times[i + 1][j] = Math.min(times[i + 1][j], times[i][j] + 1);
